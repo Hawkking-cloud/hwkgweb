@@ -3,12 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Page</title>
+    <title>Hawkkings Website</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        iframe {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
 
-<!-- Embed the video using an iframe -->
-<iframe src="https://vidsrc.xyz/embed/1434/21-14" width="800" height="450" frameborder="0" allowfullscreen></iframe>
+    <label for="season">Season:</label>
+    <input type="text" id="season" placeholder="Enter season">
+
+    <label for="episode">Episode:</label>
+    <input type="text" id="episode" placeholder="Enter episode">
+
+    <button onclick="updateIframe()">Update Iframe</button>
+
+    <br>
+
+    <iframe id="myIframe" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+
+    <script>
+        function updateIframe() {
+            // Get values from textboxes
+            var season = document.getElementById("season").value;
+            var episode = document.getElementById("episode").value;
+
+            // Construct the video URL based on the entered values
+            var videoUrl = "https://vidsrc.xyz/embed/1434/" + season + "-" + episode;
+
+            // Update the iframe source
+            document.getElementById("myIframe").src = videoUrl;
+        }
+    </script>
 
 </body>
 </html>
