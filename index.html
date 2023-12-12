@@ -1,8 +1,9 @@
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic Box</title>
+    <title>Hawkkings Website - Movies</title>
     <style>
         /* Reset some default styles */
         body, h1, p {
@@ -46,12 +47,48 @@
             border-radius: 5px;
             cursor: pointer;
         }
+        /* Style for the buttons */
+        .button {
+            display: inline-block;
+            margin-right: 10px; /* Adjust spacing between buttons */
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .select-container {
+            width: 200px;
+            margin-bottom: 20px;
+        }
+
+        /* Style the selection box itself */
+        select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        /* Style the button on hover */
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Additional styling for demonstration purposes */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="box">
         <button class="button">Home</button>
-        <button class="button" onclick="openPage('fguy.html')">Family Guy Episodes</button>
+        <button class="button" onclick="openPage('pirates.html')">Pirates</button>
     </div>
 
     <div class="container">
