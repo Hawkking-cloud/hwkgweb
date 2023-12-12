@@ -60,21 +60,66 @@
             border-radius: 5px;
             cursor: pointer;
         }
+        .select-container {
+            width: 200px;
+            margin-bottom: 20px;
+        }
+
+        /* Style the selection box itself */
+        select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        /* Style the button on hover */
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Additional styling for demonstration purposes */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
     </style>
 </head>
 <body>
 
     <div class="box">
         <button class="button" onclick="openPage('index.html')">Home</button>
-        <button class="button">Family Guy Episodes</button>
+        <button class="button">Pirates</button>
     </div>
+	<label for="cars">Choose a show:</label>
 
+    <select name="cars" id="show">
+      <option value="1434">Family Guy</option>
+      <option value="1433">American Dad</option>
+      <option value="1403">Marvels Agents of shield</option>
+      <option value="1996">The Flintstones</option>
+      <option value="tt2861424">Rick and Morty</option>
+      <option value="tt6226232">Young Sheldon</option>
+      <option value="tt0168366">Pokemon(1997)</option>
+      <option value="tt0903747">Breaking Bad</option>
+      <option value="tt1586680">Shameless</option>
+      <option value="tt3032476">Better Call Saul</option>
+      <option value="tt0055683">The Jetsons</option>
+      <option value="tt14837566">Captain Laserhawk: A Blood Dragon</option>
+      <option value="tt6524350">Big Mouth(gay warning)</option>
+      
+      
+      
+    </select>
     <label for="season">Season:</label>
     <input type="text" id="season" placeholder="Enter season">
-
+    
     <label for="episode">Episode:</label>
     <input type="text" id="episode" placeholder="Enter episode">
-
+    <label >Movies</label>
+       <button onclick="openPage('movies.html')">Go to movies</button>
     <button onclick="updateIframe()">Update</button>
 
     <br>
@@ -90,9 +135,14 @@
             // Get values from textboxes
             var season = document.getElementById("season").value;
             var episode = document.getElementById("episode").value;
+            var show = document.getElementById("show").value;
 
-            // Construct the video URL based on the entered values
-            var videoUrl = "https://vidsrc.xyz/embed/1434/" + season + "-" + episode;
+            // Check if the show is an IMDb ID
+            if (show.startsWith("tt")) {
+                var videoUrl = "https://vidsrc.xyz/embed/tv?imdb=" + show+"&season="+season+"&episode="+episode;
+            } else {
+                var videoUrl = "https://vidsrc.xyz/embed/" + show + "/" + season + "-" + episode;
+            }
 
             // Update the iframe source
             document.getElementById("iframe").src = videoUrl;
