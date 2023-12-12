@@ -1,69 +1,74 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hawkkings Website</title>
-
+    <title>Basic Box</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+        /* Reset some default styles */
+        body, h1, p {
+            margin: 0;
+            padding: 0;
         }
 
-        label {
-            display: block;
-            margin-bottom: 5px;
+        /* Style for the box */
+        .box {
+            width: 50%; 
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
         }
 
-        input {
-            padding: 8px;
-            margin-bottom: 10px;
-        }
-
-        button {
+        /* Style for the buttons */
+        .button {
+            display: inline-block;
+            margin-right: 10px; /* Adjust spacing between buttons */
             padding: 10px;
-            background-color: #4CAF50;
-            color: white;
+            background-color: #3498db;
+            color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
+        .container {
+            text-align: center;
+        }
 
-        iframe {
-            margin-top: 20px;
-            border: 1px solid #ccc;
+        .button2 {
+            display: inline-block;
+            margin: 10px;
+            padding: 20px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
             border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
+    <div class="box">
+        <button class="button">Home</button>
+        <button class="button" onclick="openPage('fguy.html')">Family Guy Episodes</button>
+    </div>
 
-    <label for="season">Season:</label>
-    <input type="text" id="season" placeholder="Enter season">
+    <div class="container">
+        <button class="button2" onclick="openLink('https://pypi.org/project/hcm2py/#description')">Hawk's CM2py</button>
+        <button class="button2" onclick="openLink('https://discord.com/users/586638458097893378')">Hawk's Discord</button>
+    </div>
 
-    <label for="episode">Episode:</label>
-    <input type="text" id="episode" placeholder="Enter episode">
-
-    <button onclick="updateIframe()">Update Iframe</button>
-
-    <br>
-
-    <iframe id="myIframe" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
 
     <script>
-        function updateIframe() {
-            // Get values from textboxes
-            var season = document.getElementById("season").value;
-            var episode = document.getElementById("episode").value;
+        function openPage(page) {
+            window.location.href = page;
+        }
 
-            // Construct the video URL based on the entered values
-            var videoUrl = "https://vidsrc.xyz/embed/1434/" + season + "-" + episode;
-
-            // Update the iframe source
-            document.getElementById("myIframe").src = videoUrl;
+        function openLink(link) {
+            window.open(link, '_blank');
         }
     </script>
-
 </body>
+
 </html>
