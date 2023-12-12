@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hawkkings Website - Movies</title>
+    <style>
+        body, h1, p {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            display: inline-block;
+            margin-right: 10px;
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        iframe {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Style for the box */
+        .box {
+            width: 50%; /* Adjust as needed */
+            max-width: 900px; /* Set a maximum width */
+            margin: 20px auto; /* Center the box horizontally */
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px; /* Add rounded corners */
+        }
+
+        /* Style for the buttons */
+        .button {
+            display: inline-block;
+            margin-right: 10px; /* Adjust spacing between buttons */
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .select-container {
+            width: 200px;
+            margin-bottom: 20px;
+        }
+
+        /* Style the selection box itself */
+        select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        /* Style the button on hover */
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Additional styling for demonstration purposes */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <button class="button" onclick="openPage('index.html')">Home</button>
+        <button class="button">Pirates</button>
+    </div>
+	<label for="cars">Choose a show:</label>
+
+    <select name="cars" id="movie">
+      <option value="tt1232829">21 Jump Street</option>
+      <option value="tt13428402">Stand by Me Doraemon 2</option>
+      <option value="tt1985949">Angry Birds</option>
+      <option value="tt1323594">Despicible Me's</option>
+      <option value="tt0351283">Madagascar</option>
+      <option value="tt2120120">Pixels</option>
+      <option value="tt0274518">Gayniggers from outerspace(not even fucking joking)</option>
+      <option value="tt0322802 ">Jackass the movie</option>
+      
+      
+    </select>
+    <label for="season">TV Shows</label>
+    <button onclick="openPage('pirates.html')">Go to TV Shows</button>
+
+    <button onclick="updateIframe()">Update</button>
+
+    <br>
+
+    <iframe id="iframe" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+
+    <script>
+        function openPage(page) {
+            window.location.href = page;
+        }
+
+        function updateIframe() {
+            var movie = document.getElementById("movie").value;
+             var videoUrl = "https://vidsrc.xyz/embed/movie?imdb="+movie
+            document.getElementById("iframe").src = videoUrl;
+        }
+    </script>
+    
+</body>
+</html>
