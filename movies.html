@@ -87,46 +87,100 @@
         }
     </style>
 </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search</title>
+</head>
 <body>
 
     <div class="box">
         <button class="button" onclick="openPage('index.html')">Home</button>
         <button class="button">Pirates</button>
     </div>
-	<label for="cars">Choose a show:</label>
 
-    <select name="cars" id="movie">
-      <option value="tt1232829">21 Jump Street</option>
-      <option value="tt13428402">Stand by Me Doraemon 2</option>
-      <option value="tt1985949">Angry Birds</option>
-      <option value="tt1323594">Despicible Me's</option>
-      <option value="tt0351283">Madagascar</option>
-      <option value="tt2120120">Pixels</option>
-      <option value="tt0274518">Gayniggers from outerspace(not even fucking joking)</option>
-      <option value="tt0322802 ">Jackass the movie</option>
-      
-      
-    </select>
-    <label for="season">TV Shows</label>
-    <button onclick="openPage('pirates.html')">Go to TV Shows</button>
+    <label for="movieSearch">Search for a movie:</label>
+    <input type="text" id="movieSearch" placeholder="Enter movie name" oninput="searchMovies()">
+    
+    <ul id="movieList">
 
-    <button onclick="updateIframe()">Update</button>
+        <li data-imdb="tt1232829">21 Jump Street</li>
+        <li data-imdb="tt13428402">Stand by Me Doraemon 2</li>
+        <li data-imdb="tt1985949">Angry Birds</li>
+        <li data-imdb="tt1323594">Despicible Me's</li>
+        <li data-imdb="tt0351283">Madagascar</li>
+        <li data-imdb="tt2120120">Pixels</li>
+        <li data-imdb="tt0274518">Gayniggers from outerspace(not even fucking joking)</li>
+        <li data-imdb="tt0322802">Jackass the movie</li>
+        <li data-imdb="tt0816692">Interstellar</li>
+        <li data-imdb="tt5755238">Leo</li>
+        <li data-imdb="tt0198781">Monsters Inc</li>
+        <li data-imdb="tt2096673">Inside Out</li>
+        <li data-imdb="tt1049413">Up</li>
+        <li data-imdb="tt0910970">Wall-E</li>
+        <li data-imdb="tt0114709">Toy Story</li>
+        <li data-imdb="tt0117705">Space Jam</li>
+        <li data-imdb="tt0099785">Home Alone</li>
+        <li data-imdb="tt2380307">Coco</li>
+        <li data-imdb="tt3794354">Sonic The Hedgehog</li>
+        <li data-imdb="tt12412888">Sonic The Hedgehog 2</li>
+        <li data-imdb="tt2948372">Soul</li>
+        <li data-imdb="tt5755238">Leo</li>
+    </ul>
+
+    <div id="movieButtons"></div>
 
     <br>
 
     <iframe id="iframe" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+    <img src="https://classroomclipart.com/image/static2/preview2/pirate-running-with-chest-of-gold-coins-clipart-23199.jpg" alt="Pirate Image">
 
     <script>
         function openPage(page) {
             window.location.href = page;
         }
 
-        function updateIframe() {
-            var movie = document.getElementById("movie").value;
-             var videoUrl = "https://vidsrc.xyz/embed/movie?imdb="+movie
+        function searchMovies() {
+            var searchTerm = document.getElementById("movieSearch").value.toLowerCase();
+            var movieList = document.getElementById("movieList");
+            var movies = movieList.getElementsByTagName("li");
+            var movieButtonsContainer = document.getElementById("movieButtons");
+            movieButtonsContainer.innerHTML = ""; // Clear previous buttons
+
+            for (var i = 0; i < movies.length; i++) {
+                var movieName = movies[i].innerText;
+                var imdbId = movies[i].getAttribute("data-imdb");
+
+                if (movieName.includes(searchTerm)) {
+                    // Show the matching movie
+                    movies[i].style.display = "";
+
+                    // Create a button for the matching movie
+                    var button = document.createElement("button");
+                    button.innerText = movieName;
+                    button.setAttribute("data-imdb", imdbId);
+                    button.addEventListener("click", function() {
+                        setMovie(this.getAttribute("data-imdb"));
+                    });
+
+                    // Append the button to the container
+                    movieButtonsContainer.appendChild(button);
+                } else {
+                    // Hide non-matching movies
+                    movies[i].style.display = "none";
+                }
+            }
+        }
+
+        function setMovie(imdbId) {
+            var videoUrl = "https://vidsrc.xyz/embed/movie?imdb=" + imdbId;
             document.getElementById("iframe").src = videoUrl;
         }
     </script>
-    
+
 </body>
+</html>
+
 </html>
