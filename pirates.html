@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Family Guy Episodes</title>
+    <title>Hawkkings Website - TV Shows</title>
     <style>
         body, h1, p {
             font-family: Arial, sans-serif;
@@ -126,6 +126,8 @@
         <li data-value="tt0235918">The Fairly OddParents</li>
         <li data-value="tt0118360">Johnny Bravo</li>
         <li data-value="tt0063950">Scooby Doo</li>
+        <li data-value="tt0121955">South Park</li>
+        
         
         
         
@@ -163,7 +165,7 @@
                 var showName = shows[i].innerText;
                 var showValue = shows[i].getAttribute("data-value");
 
-                if (showName.includes(searchTerm)) {
+                if (showName.toLowerCase().includes(searchTerm)) {
                     // Show the matching show
                     shows[i].style.display = "";
 
