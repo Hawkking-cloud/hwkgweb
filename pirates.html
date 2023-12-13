@@ -10,17 +10,14 @@
             margin: 20px;
             padding: 0;
         }
-
         label {
             display: block;
             margin-bottom: 5px;
         }
-
         input {
             padding: 8px;
             margin-bottom: 10px;
         }
-
         button {
             display: inline-block;
             margin-right: 10px;
@@ -31,28 +28,23 @@
             border-radius: 5px;
             cursor: pointer;
         }
-
         iframe {
             margin-top: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-
-        /* Style for the box */
         .box {
-            width: 50%; /* Adjust as needed */
-            max-width: 900px; /* Set a maximum width */
-            margin: 20px auto; /* Center the box horizontally */
+            width: 50%; 
+            max-width: 900px; 
+            margin: 20px auto; 
             background-color: #f0f0f0;
             border: 1px solid #ccc;
             padding: 20px;
-            border-radius: 10px; /* Add rounded corners */
+            border-radius: 10px; 
         }
-
-        /* Style for the buttons */
         .button {
             display: inline-block;
-            margin-right: 10px; /* Adjust spacing between buttons */
+            margin-right: 10px;
             padding: 10px;
             background-color: #3498db;
             color: #fff;
@@ -64,8 +56,6 @@
             width: 200px;
             margin-bottom: 20px;
         }
-
-        /* Style the selection box itself */
         select {
             width: 100%;
             padding: 10px;
@@ -74,13 +64,9 @@
             border-radius: 5px;
             box-sizing: border-box;
         }
-
-        /* Style the button on hover */
         button:hover {
             background-color: #45a049;
         }
-
-        /* Additional styling for demonstration purposes */
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
@@ -158,28 +144,22 @@
             var showList = document.getElementById("showList");
             var shows = showList.getElementsByTagName("li");
             var showButtonsContainer = document.getElementById("showButtons");
-            showButtonsContainer.innerHTML = ""; // Clear previous buttons
+            showButtonsContainer.innerHTML = "";
 
             for (var i = 0; i < shows.length; i++) {
                 var showName = shows[i].innerText;
                 var showValue = shows[i].getAttribute("data-value");
 
                 if (showName.toLowerCase().includes(searchTerm)) {
-                    // Show the matching show
                     shows[i].style.display = "";
-
-                    // Create a button for the matching show
                     var button = document.createElement("button");
                     button.innerText = showName;
                     button.setAttribute("data-value", showValue);
                     button.addEventListener("click", function() {
                         setShow(this.getAttribute("data-value"));
                     });
-
-                    // Append the button to the container
                     showButtonsContainer.appendChild(button);
                 } else {
-                    // Hide non-matching shows
                     shows[i].style.display = "none";
                 }
             }
@@ -188,15 +168,11 @@
         function setShow(showValue) {
             var season = document.getElementById("season").value;
             var episode = document.getElementById("episode").value;
-
-            // Check if the show is an IMDb ID
             if (showValue.startsWith("tt")) {
                 var videoUrl = "https://vidsrc.xyz/embed/tv?imdb=" + showValue + "&season=" + season + "&episode=" + episode;
             } else {
                 var videoUrl = "https://vidsrc.xyz/embed/" + showValue + "/" + season + "-" + episode;
             }
-
-            // Update the iframe source
             document.getElementById("iframe").src = videoUrl;
         }
 
@@ -204,15 +180,12 @@
             var season = document.getElementById("season").value;
             var episode = document.getElementById("episode").value;
             var show = document.getElementById("show").value;
-
-            // Check if the show is an IMDb ID
             if (show.startsWith("tt")) {
                 var videoUrl = "https://vidsrc.xyz/embed/tv?imdb=" + show + "&season=" + season + "&episode=" + episode;
             } else {
                 var videoUrl = "https://vidsrc.xyz/embed/" + show + "/" + season + "-" + episode;
             }
 
-            // Update the iframe source
             document.getElementById("iframe").src = videoUrl;
         }
     </script>
