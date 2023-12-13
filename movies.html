@@ -6,26 +6,36 @@
     <title>Hawkkings Website - Movies</title>
     <style>
         body, h1, p {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
+            background-color: #323264;
+
+            background-size: cover; 
+            background-repeat: no-repeat;
+            color: #fff;
+            margin: 0;
             padding: 0;
         }
+
 
         label {
             display: block;
             margin-bottom: 5px;
+            
+     
         }
-
         input {
             padding: 8px;
+            background-color: #323264;
             margin-bottom: 10px;
+            color: #fff;
         }
 
         button {
             display: inline-block;
             margin-right: 10px;
             padding: 10px;
-            background-color: #3498db;
+            background-color: #4F3496;
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -37,24 +47,29 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-
-        /* Style for the box */
         .box {
-            width: 50%; /* Adjust as needed */
-            max-width: 900px; /* Set a maximum width */
-            margin: 20px auto; /* Center the box horizontally */
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
+            width: 50%; 
+            max-width: 900px;
+            margin: 20px auto; 
+            background-color: #32324B;
+            border: 1px solid #323232;
             padding: 20px;
-            border-radius: 10px; /* Add rounded corners */
+            border-radius: 10px; 
         }
-
-        /* Style for the buttons */
+        .box2 {
+            width: 90%;
+            max-width: 900px; 
+            margin: 20px auto; 
+            background-color: #32324B;
+            border: 1px solid #323232;
+            padding: 20px;
+            border-radius: 10px; 
+        }
         .button {
             display: inline-block;
-            margin-right: 10px; /* Adjust spacing between buttons */
+            margin-right: 10px; 
             padding: 10px;
-            background-color: #3498db;
+            background-color: #4F3496;
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -64,8 +79,6 @@
             width: 200px;
             margin-bottom: 20px;
         }
-
-        /* Style the selection box itself */
         select {
             width: 100%;
             padding: 10px;
@@ -74,13 +87,12 @@
             border-radius: 5px;
             box-sizing: border-box;
         }
-
-        /* Style the button on hover */
         button:hover {
-            background-color: #45a049;
+            background-color: #8264C8;
         }
-
-        /* Additional styling for demonstration purposes */
+        input:hover {
+            background-color: #646496;
+        }
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
@@ -98,9 +110,10 @@
 
     <div class="box">
         <button class="button" onclick="openPage('index.html')">Home</button>
-        <button class="button">Pirates</button>
+        <button onclick="openPage('pirates.html')">TV Shows</button>
+        <button>Movies</button>
     </div>
-
+    <div class="box2">
     <label for="movieSearch">Search for a movie:</label>
     <input type="text" id="movieSearch" placeholder="Enter movie name" oninput="searchMovies()">
     

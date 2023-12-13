@@ -6,28 +6,42 @@
     <title>Hawkkings Website - TV Shows</title>
     <style>
         body, h1, p {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
+            background-color: #323264;
+
+            background-size: cover; 
+            background-repeat: no-repeat;
+            color: #fff;
+            margin: 0;
             padding: 0;
         }
+
+
         label {
             display: block;
             margin-bottom: 5px;
+            
+     
         }
         input {
             padding: 8px;
+            background-color: #323264;
             margin-bottom: 10px;
+            color: #fff;
         }
+
         button {
             display: inline-block;
             margin-right: 10px;
             padding: 10px;
-            background-color: #3498db;
+            background-color: #4F3496;
             color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
+
         iframe {
             margin-top: 20px;
             border: 1px solid #ccc;
@@ -35,18 +49,27 @@
         }
         .box {
             width: 50%; 
+            max-width: 900px;
+            margin: 20px auto; 
+            background-color: #32324B;
+            border: 1px solid #323232;
+            padding: 20px;
+            border-radius: 10px; 
+        }
+        .box2 {
+            width: 90%;
             max-width: 900px; 
             margin: 20px auto; 
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
+            background-color: #32324B;
+            border: 1px solid #323232;
             padding: 20px;
             border-radius: 10px; 
         }
         .button {
             display: inline-block;
-            margin-right: 10px;
+            margin-right: 10px; 
             padding: 10px;
-            background-color: #3498db;
+            background-color: #4F3496;
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -65,7 +88,10 @@
             box-sizing: border-box;
         }
         button:hover {
-            background-color: #45a049;
+            background-color: #8264C8;
+        }
+        input:hover {
+            background-color: #646496;
         }
         body {
             font-family: Arial, sans-serif;
@@ -77,11 +103,13 @@
 
     <div class="box">
         <button class="button" onclick="openPage('index.html')">Home</button>
-        <button class="button">Pirates</button>
+        <button>TV Shows</button>
+        <button onclick="openPage('movies.html')">Movies</button>
     </div>
+    <div class="box2">
 	<label for="showSearch">Search for a show:</label>
     <input type="text" id="showSearch" placeholder="Enter show name" oninput="searchShows()">
-
+    
     <ul id="showList">
         <li data-value="1434">Family Guy</li>
         <li data-value="1433">American Dad</li>
@@ -127,13 +155,11 @@
 
     <label for="episode">Episode:</label>
     <input type="text" id="episode" placeholder="Enter episode">
-    <label>Movies</label>
-    <button onclick="openPage('movies.html')">Go to movies</button>
-
+    
     <br>
 
     <iframe id="iframe" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
-
+    </div>
     <script>
         function openPage(page) {
             window.location.href = page;

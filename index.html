@@ -5,54 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hawkkings Website - Movies</title>
     <style>
-        /* Reset some default styles */
         body, h1, p {
+            margin: 0;
+            padding: 0;
+            background-color: #323264;
+
+            background-size: cover; 
+            background-repeat: no-repeat;
+            color: #fff;
             margin: 0;
             padding: 0;
         }
 
-        /* Style for the box */
-        .box {
-            width: 50%; 
-            max-width: 900px;
-            margin: 20px auto;
-            background-color: #f0f0f0;
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            
+     
+        }
+        input {
+            padding: 8px;
+            background-color: #323264;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        button {
+            display: inline-block;
+            margin-right: 10px;
+            padding: 10px;
+            background-color: #4F3496;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        iframe {
+            margin-top: 20px;
             border: 1px solid #ccc;
-            padding: 20px;
-            border-radius: 10px;
+            border-radius: 5px;
         }
-
-        /* Style for the buttons */
+        .box {
+            width: 80%; 
+            max-width: 900px;
+            margin: 20px auto; 
+            background-color: #32324B;
+            border: 1px solid #323232;
+            padding: 20px;
+            border-radius: 10px; 
+        }
+        .box2 {
+            width: 90%;
+            max-width: 900px; 
+            margin: 20px auto; 
+            background-color: #32324B;
+            border: 1px solid #323232;
+            padding: 20px;
+            border-radius: 10px; 
+        }
         .button {
             display: inline-block;
-            margin-right: 10px; /* Adjust spacing between buttons */
+            margin-right: 10px; 
             padding: 10px;
-            background-color: #3498db;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .container {
-            text-align: center;
-        }
-
-        .button2 {
-            display: inline-block;
-            margin: 10px;
-            padding: 20px;
-            background-color: #3498db;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        /* Style for the buttons */
-        .button {
-            display: inline-block;
-            margin-right: 10px; /* Adjust spacing between buttons */
-            padding: 10px;
-            background-color: #3498db;
+            background-color: #4F3496;
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -62,8 +79,6 @@
             width: 200px;
             margin-bottom: 20px;
         }
-
-        /* Style the selection box itself */
         select {
             width: 100%;
             padding: 10px;
@@ -72,30 +87,45 @@
             border-radius: 5px;
             box-sizing: border-box;
         }
-
-        /* Style the button on hover */
         button:hover {
-            background-color: #45a049;
+            background-color: #8264C8;
         }
-
-        /* Additional styling for demonstration purposes */
+        input:hover {
+            background-color: #646496;
+        }
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
         }
+        .container {
+            text-align: center;
+        }
+        .page-break {
+            border-top: 1px solid #ccc;
+            margin-top: 20px; 
+          }
     </style>
 </head>
 <body>
     <div class="box">
+        
+        <div class="container">
         <button class="button">Home</button>
-        <button class="button" onclick="openPage('pirates.html')">Pirates</button>
+            <button class="button" onclick="openPage('pirates.html')">Pirates</button>
+        </div>
     </div>
-
+    
+    
     <div class="container">
         <button class="button2" onclick="openLink('https://pypi.org/project/hcm2py/#description')">Hawk's CM2py</button>
-        <button class="button2" onclick="openLink('https://discord.com/users/586638458097893378')">Hawk's Discord</button>
+    <hr class="page-break"></hr>
     </div>
-
+    <div class="container">
+        <div class="container">
+            <img src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" width="200" height="200" onclick="openLink('https://discord.com/users/586638458097893378')">
+            <img src="https://pngimg.com/d/github_PNG58.png" width="200" height="200" onclick="openLink('https://github.com/Hawkking-cloud/hwkgweb/blob/main')">
+        </div>
+    </div>
 
     <script>
         function openPage(page) {
