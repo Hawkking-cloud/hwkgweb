@@ -153,7 +153,7 @@
                 var movieName = movies[i].innerText;
                 var imdbId = movies[i].getAttribute("data-imdb");
 
-                if (movieName.includes(searchTerm)) {
+                if (movieName.toLowerCase().includes(searchTerm)) {
                     // Show the matching movie
                     movies[i].style.display = "";
 
