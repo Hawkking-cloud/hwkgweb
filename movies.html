@@ -97,6 +97,11 @@
             font-family: Arial, sans-serif;
             margin: 20px;
         }
+        .highlight {
+            display: block;
+            margin-bottom: 5px;
+            color: yellow;
+        }        
     </style>
 </head>
 <!DOCTYPE html>
@@ -104,6 +109,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; frame-src 'self' https://vidsrc.xyz;">
     <title>Movie Search</title>
 </head>
 <body>
@@ -173,6 +179,7 @@
     <div id="movieButtons"></div>
 
     <br>
+    <p class="highlight">recommended adblocker for better usage (viewer may send you to malicious sites)</p>
 
     <iframe id="iframe" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
 
