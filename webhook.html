@@ -1,0 +1,94 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hawkkings Website - Webhook</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="funcs.js"></script>
+    <script src="https://unpkg.com/wc-discord-message@^2.0.0/dist/wc-discord-message/wc-discord-message.js"></script>
+</head>
+<body>
+    <div class="topbar">
+        <div class="container">
+            <button class="topbarbuttons" onclick="openPage('index.html')">Home</button>
+            <button class="topbarbuttons" onclick="openPage('pirates.html')">TV Shows</button>
+            <button class="topbarbuttons" onclick="openPage('movies.html')">Movies</button>
+            <button class="topbarbuttons" onclick="openPage('webhook.html')">Webhook</button>
+        </div>
+    </div>
+    <div class="box2"> 
+        <label>Text : </label>
+        <textarea class="biginput"placeholder="Text Here"id="stuffs"oninput="updateWidget()"></textarea>
+        <label>Send : </label>
+        <button onclick="sendText()">Send</button>
+    </div>
+    <div class="box2"> 
+    <discord-messages>
+        <discord-message author="HWKGWEB webhook" avatar="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIeolB_Cf5HSMEA6mOU-SO24XEY4p7fTprBIxwtnPSew&s" bot>
+            <label id='message'></label>
+        </discord-message>
+    </discord-messages>
+    </div>
+        <script>
+            
+            async function sendText() {
+                const webhookURL = "https://discord.com/api/webhooks/1184673232780009534/YxFXivqoZJM7h2GjUliWIPP2ldt3lU8ZYlbF9pQvR7HCJhVUTi3MhyCKhZiqoeEVKWTc";
+            
+                const baseParams = {
+                    username: "HWKGWEB webhook",
+                    avatar_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIeolB_Cf5HSMEA6mOU-SO24XEY4p7fTprBIxwtnPSew&s",
+                };
+            
+                const content = document.getElementById('stuffs').value;
+                const params = {
+                    ...baseParams,
+                    content: content,
+                };
+            
+                await fetch(webhookURL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(params),
+                });
+            }
+            
+            function updateWidget() {
+                const discordMessages = document.querySelector('discord-messages');
+                discordMessages.innerHTML = '';
+            
+                const params = {
+                    username: "HWKGWEB webhook",
+                    avatar_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIeolB_Cf5HSMEA6mOU-SO24XEY4p7fTprBIxwtnPSew&s",
+                    content: document.getElementById('stuffs').value
+                };
+            
+                const lines = params.content.split('\n');
+                const newMessage = document.createElement('discord-message');
+                for (var i = 0; i < lines.length; i++) {
+            
+                    newMessage.setAttribute('author', params.username);
+                    newMessage.setAttribute('avatar', params.avatar_url);
+            
+                    const label = document.createElement('label');
+                    label.textContent = lines[i];
+            
+                    // Append a newline character after each line (except the last one)
+                    if (i < lines.length - 1) {
+                        label.textContent += '\n';
+                    }
+            
+                    newMessage.appendChild(label);
+                    newMessage.bot = true;
+            
+                    discordMessages.appendChild(newMessage);
+                }
+            }
+                        
+                
+        </script>
+</body>
+
+</html> 

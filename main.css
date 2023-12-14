@@ -58,7 +58,16 @@ input {
     background-color: #323264;
     margin-bottom: 10px;
     color: #fff;
+    transition: background-color 0.2s ease-out, transform 0.2s ease-out, box-shadow 0.2s ease-out;
 }
+.biginput {
+    width: 650px;
+    height: 200px;
+    background-color: #323264;
+    color: #fff;
+    transition: background-color 0.2s ease-out, transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
 button {
     display: inline-block;
     margin-right: 10px;
@@ -78,10 +87,15 @@ button:hover {
 }
 
 input:hover {
-    transition: 1s ease;
     background-color: #646496;
-    transform: scale(1.2);
+    transform: scale(1.1);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.biginput:hover {
+    background-color: #646496;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transform: scale(1);
+    transition: background-color 0.2s ease-in, box-shadow 0.2s ease-in;
 }
 body {
     font-family: Arial, sans-serif;

@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hawkkings Website - TV Shows</title>
     <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="funcs.js"></script>
 </head>
 <body>
 
     <div class="topbar">
         <div class="container">
-            <button class="button" onclick="openPage('index.html')">Home</button>
-            <button>TV Shows</button>
-            <button onclick="openPage('movies.html')">Movies</button>
+            <button class="topbarbuttons" onclick="openPage('index.html')">Home</button>
+            <button class="topbarbuttons" onclick="openPage('pirates.html')">TV Shows</button>
+            <button class="topbarbuttons" onclick="openPage('movies.html')">Movies</button>
+            <button class="topbarbuttons" onclick="openPage('webhook.html')">Webhook</button>
         </div>
-    
     </div>
     <div class="box2">
 	<label for="showSearch">Search for a show:</label>
@@ -72,10 +73,6 @@
     <iframe id="iframe" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
     </div>
     <script>
-        function openPage(page) {
-            window.location.href = page;
-        }
-
         function searchShows() {
             var searchTerm = document.getElementById("showSearch").value.toLowerCase();
             var showList = document.getElementById("showList");

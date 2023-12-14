@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hawkkings Website - Movies</title>
     <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="funcs.js"></script>
 </head>
 <body>
 
     <div class="topbar">
         <div class="container">
-            <button class="button" onclick="openPage('index.html')">Home</button>
-            <button onclick="openPage('pirates.html')">TV Shows</button>
-            <button>Movies</button>
+            <button class="topbarbuttons" onclick="openPage('index.html')">Home</button>
+            <button class="topbarbuttons" onclick="openPage('pirates.html')">TV Shows</button>
+            <button class="topbarbuttons" onclick="openPage('movies.html')">Movies</button>
+            <button class="topbarbuttons" onclick="openPage('webhook.html')">Webhook</button>
         </div>
-    
     </div>
     <div class="box2">
     <label for="movieSearch">Search for a movie:</label>
@@ -68,6 +69,9 @@
         <li data-imdb="tt5090568">Transformers: Rise of the Beasts</li>
         <li data-imdb="tt3371366">Transformers: The Last Knight</li>
         <li data-imdb="tt2109248">Transformers: Age of Extinction</li>
+        <li data-imdb="tt0170016">How the grinch stole christmas(jim carrey)</li>
+
+        
         
         
         
@@ -81,16 +85,12 @@
     <iframe id="iframe" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
 
     <script>
-        function openPage(page) {
-            window.location.href = page;
-        }
-
         function searchMovies() {
             var searchTerm = document.getElementById("movieSearch").value.toLowerCase();
             var movieList = document.getElementById("movieList");
             var movies = movieList.getElementsByTagName("li");
             var movieButtonsContainer = document.getElementById("movieButtons");
-            movieButtonsContainer.innerHTML = ""; // Clear previous buttons
+            movieButtonsContainer.innerHTML = "";
 
             for (var i = 0; i < movies.length; i++) {
                 var movieName = movies[i].innerText;
@@ -119,8 +119,16 @@
 
         function setMovie(imdbId) {
             var videoUrl = "https://vidsrc.xyz/embed/movie?imdb=" + imdbId;
-            document.getElementById("iframe").src = videoUrl;
-        }
+            document.getElementById("iframe").src = videoUrl;       }
+        document.getElementById('iframe').onload = function() {
+            var iframeDocument = document.getElementById('iframe').contentDocument;
+            var links = iframeDocument.getElementsByTagName('a');
+            
+            for (var i = 0; i < links.length; i++) {
+                links[i].removeAttribute('href');
+                links[i].style.pointerEvents = 'none';
+            }
+        };
     </script>
 
 </body>

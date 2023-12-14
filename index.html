@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hawkkings Website - Movies</title>
     <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="funcs.js"></script>
 </head>
 <body>
     <div class="topbar">
         <div class="container">
-            <button id='selected_box' class="selectedbutton">Home</button>
+            <button class="topbarbuttons" onclick="openPage('index.html')">Home</button>
             <button class="topbarbuttons" onclick="openPage('pirates.html')">TV Shows</button>
             <button class="topbarbuttons" onclick="openPage('movies.html')">Movies</button>
+            <button class="topbarbuttons" onclick="openPage('webhook.html')">Webhook</button>
         </div>
-    
     </div>
     
     
@@ -27,16 +28,6 @@
             <img src="https://pngimg.com/d/github_PNG58.png" width="200" height="200" onclick="openLink('https://github.com/Hawkking-cloud/hwkgweb/blob/main')">
         </div>
     </div>
-
-    <script>
-        function openPage(page) {
-            window.location.href = page;
-        }
-
-        function openLink(link) {
-            window.open(link, '_blank');
-        }
-    </script>
 </body>
 
 </html>
