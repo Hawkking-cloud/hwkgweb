@@ -19,28 +19,35 @@
         </div>
     </div>
     <div class="box2"> 
+        <label>Name : </label>
+        <input placeholder="name here" id="name" oninput="updatemessage()">
+        </input>
+        <label>PFP link(optional) : </label>
+        <input placeholder="link here" id="pfplink">
+        </input>
         <label>Text : </label>
         <textarea class="biginput"placeholder="Text Here"id="stuffs"oninput="updateWidget()"></textarea>
         <label>Send : </label>
         <button onclick="sendText()">Send</button>
-        <button onclick="openPage('webhookcustom.html')">Advanced</button>
     </div>
     <div class="box2"> 
     <discord-messages>
-        <discord-message author="HWKGWEB webhook" avatar="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIeolB_Cf5HSMEA6mOU-SO24XEY4p7fTprBIxwtnPSew&s" bot>
+        <discord-message id="message" author="HWKGWEB webhook" avatar="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIeolB_Cf5HSMEA6mOU-SO24XEY4p7fTprBIxwtnPSew&s" bot>
             <label id='message'></label>
         </discord-message>
     </discord-messages>
     </div>
         <script>
-            
+            function updatemessage(){
+                document.getElementById('message').author=document.getElementById('name').value
+            }
             async function sendText() {
                 //abuse this and im havin ur ip
                 const webhookURL = "https://discord.com/api/webhooks/1185330677995028490/tXT3IykJLV_mRcU5ZiCxVHvgPyabhc2dOn9EtJVGl4Wdl2FBx-RpGiNnWKs6lKATnuXF";
 
                 const baseParams = {
-                    username: "website webhook",
-                    avatar_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIeolB_Cf5HSMEA6mOU-SO24XEY4p7fTprBIxwtnPSew&s",
+                    username: document.getElementById('name').value,
+                    avatar_url: document.getElementById('pfplink').value || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIeolB_Cf5HSMEA6mOU-SO24XEY4p7fTprBIxwtnPSew&s',
                 };
             
                 const content = document.getElementById('stuffs').value;
@@ -63,10 +70,10 @@
                 discordMessages.innerHTML = '';
             
                 const params = {
-                    username: "HWKGWEB webhook",
-                    avatar_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIeolB_Cf5HSMEA6mOU-SO24XEY4p7fTprBIxwtnPSew&s",
+                    username: document.getElementById('name').value,
+                    avatar_url: document.getElementById('pfplink').value || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIeolB_Cf5HSMEA6mOU-SO24XEY4p7fTprBIxwtnPSew&s',
                     content: document.getElementById('stuffs').value
-                };
+                }; 
             
                 const lines = params.content.split('\n');
                 const newMessage = document.createElement('discord-message');
