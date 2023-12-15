@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotating Cube</title>
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    <script src="../../main.js"></script>
+</head>
+<body>
+    <div class="topbar">
+        <div class="container">
+            <button class="topbarbuttons" onclick="openPage('../../index.html')">Home</button>
+            <button class="topbarbuttons" onclick="openPage('../../pirates.html')">TV Shows</button>
+            <button class="topbarbuttons" onclick="openPage('../../movies.html')">Movies</button>
+            <button class="topbarbuttons" onclick="openPage('../../webhook.html')">Webhook</button>
+            <button class="topbarbuttons" onclick="openPage('../../cm2select.html')">Circuit Maker 2</button>
+        </div>
+    </div>
+    <div class="box2" id="mainbox">
+        <label class="highlight">BETA, MAY BE UNSTABLE</label>
+        <input placeholder="string here" id="stringinput" oninput="render()"></input>
+        <script src="https://threejs.org/build/three.js"></script>
+        <script src="main.js"></script>
+        <!-- cam movements -->
+        <script>
+            // Flags to track whether specific keys are currently pressed
+let isWKeyPressed = false;
+let isAKeyPressed = false;
+let isSKeyPressed = false;
+let isDKeyPressed = false;
+let isEKeyPressed = false;
+let isQKeyPressed = false;
+let isLeftArrowKeyPressed = false;
+let isRightArrowKeyPressed = false;
+let isShiftKeyPressed = false; // Added flag for Shift key
+
+function handleKeyPress() {
+    const moveSpeed = isShiftKeyPressed ? 0.2 : 0.1; // Adjust the speed when Shift is pressed
+
+    if (isWKeyPressed) {
+        moveCameraForward(moveSpeed);
+    }
+    if (isAKeyPressed) {
+        moveCameraLeft(moveSpeed);
+    }
+    if (isSKeyPressed) {
+        moveCameraBackward(moveSpeed);
+    }
+    if (isDKeyPressed) {
+        moveCameraRight(moveSpeed);
+    }
+    if (isEKeyPressed) {
+        moveCameraUp(moveSpeed);
+    }
+    if (isQKeyPressed) {
+        moveCameraDown(moveSpeed);
+    }
+    if (isLeftArrowKeyPressed) {
+        rotateCameraLeft(0.05);
+    }
+    if (isRightArrowKeyPressed) {
+        rotateCameraRight(0.05);
+    }
+    // Add more key checks and actions as needed
+}
+
+document.addEventListener('keydown', function (event) {
+    // Set corresponding flags when keys are pressed
+    if (event.key === 'w') {
+        isWKeyPressed = true;
+    }
+    if (event.key === 'a') {
+        isAKeyPressed = true;
+    }
+    if (event.key === 's') {
+        isSKeyPressed = true;
+    }
+    if (event.key === 'd') {
+        isDKeyPressed = true;
+    }
+    if (event.key === 'e') {
+        isEKeyPressed = true;
+    }
+    if (event.key === 'q') {
+        isQKeyPressed = true;
+    }
+    if (event.key === 'ArrowLeft') {
+        isLeftArrowKeyPressed = true;
+    }
+    if (event.key === 'ArrowRight') {
+        isRightArrowKeyPressed = true;
+    }
+    if (event.key === 'Shift') {
+        isShiftKeyPressed = true; // Set the Shift key flag
+    }
+    // Add more key checks as needed
+});
+
+document.addEventListener('keyup', function (event) {
+    // Clear corresponding flags when keys are released
+    if (event.key === 'w') {
+        isWKeyPressed = false;
+    }
+    if (event.key === 'a') {
+        isAKeyPressed = false;
+    }
+    if (event.key === 's') {
+        isSKeyPressed = false;
+    }
+    if (event.key === 'd') {
+        isDKeyPressed = false;
+    }
+    if (event.key === 'e') {
+        isEKeyPressed = false;
+    }
+    if (event.key === 'q') {
+        isQKeyPressed = false;
+    }
+    if (event.key === 'ArrowLeft') {
+        isLeftArrowKeyPressed = false;
+    }
+    if (event.key === 'ArrowRight') {
+        isRightArrowKeyPressed = false;
+    }
+    if (event.key === 'Shift') {
+        isShiftKeyPressed = false; // Clear the Shift key flag
+    }
+    // Add more key checks as needed
+});
+
+        setInterval(handleKeyPress, 16); // Adjust the interval as needed (60 FPS)        </script>
+        
+        <!-- string to json converter -->
+        <script>
+            function converter(saveString) {
+                const saveData = {
+                    blocks: [],
+                    connections: [],
+                    buildings: [],
+                    signData: []
+                };
+                const parts = saveString.split("?");
+                const blockData = parts[0].split(";");
+                for (const block of blockData) {
+                    if (block.trim() === "") continue;
+                    const [blockId, state, x, y, z, properties] = block.split(",");
+                    let parsedProperties = properties || ""; // Default to an empty string if properties is falsy
+        
+                    saveData.blocks.push({
+                        blockId: parseInt(blockId),
+                        state: parseInt(state),
+                        x: parseFloat(x),
+                        y: parseFloat(y),
+                        z: parseFloat(z),
+                        properties: parsedProperties
+                    });
+                }
+                const connectionData = parts[1].split(";");
+                for (const connection of connectionData) {
+                    if (connection.trim() === "") continue;
+                    saveData.connections.push(connection.split(","));
+                }
+                const buildingData = parts[2].split(";");
+                for (const building of buildingData) {
+                    if (building.trim() === "") continue;
+                    saveData.buildings.push(building.split(","));
+                }
+                const signData = parts[3].split(";");
+                for (const sign of signData) {
+                    if (sign.trim() === "") continue;
+        
+                    saveData.signData.push(sign.split(","));
+                }
+                return saveData;
+            } 
+        </script>
+        <!-- actual code -->
+        <script>
+            function render() {
+                const scene = new THREE.Scene();
+                const blockColours = [
+                    [255, 9, 0],
+                    [0, 121, 255],
+                    [0, 241, 29],
+                    [168, 0, 255],
+                    [255, 127, 0],
+                    [30, 30, 30],
+                    [175, 175, 175],
+                    [175, 131, 76],
+                    [73, 185, 255],
+                    [255, 72, 72],
+                    [0, 42, 89],
+                    [213, 0, 103],
+                    [84, 54, 35],
+                    [25, 71, 84],
+                    [75, 75, 75]
+                ];
+                
+                const jsonString = document.getElementById('stringinput').value;
+                let newjsonString = jsonString; // Initialize newjsonString
+        
+                if (jsonString.startsWith('https://dpaste.org/')) {
+                    const dpasteId = jsonString.substring(19, jsonString.length - 4);
+                    fetch(`https://dpaste.org/${dpasteId}/raw`)
+                        .then(response => response.text())
+                        .then(newData => {
+                            newjsonString = newData; // Update newjsonString after fetch
+                            continueRender();
+                        })
+                        .catch(error => {
+                            // Handle fetch error
+                            console.error('Error fetching data:', error);
+                            continueRender(); // Continue render even if fetch fails
+                        });
+                } else {
+                    // Continue render if not a dpaste link
+                    continueRender();
+                }
+        
+                function continueRender() {
+                    const json = converter(newjsonString);
+                    
+                    for (let i = 0; i < json.blocks.length; i++) {
+                        const block = json.blocks[i];
+                        const part = block.blockId;
+                        const x = parseInt(block.x); // Convert to integers if needed
+                        const y = parseInt(block.y);
+                        const z = parseFloat(block.z);
+                        let color = blockColours[part];
+        
+                        if (part == 6 || part == 14) {
+                            color = block.properties.split("+");
+                        }
+        
+                        if (part == 6) {
+                            createCube(x, y, z, [
+                                color[0] / 255,
+                                color[1] / 255,
+                                color[2] / 255
+                            ], true);
+                        } else {
+                            createCube(x, y, z, [
+                                color[0] / 255,
+                                color[1] / 255,
+                                color[2] / 255
+                            ], false);
+                        }        
+                    }
+        
+                    animate();
+                }
+            }
+        </script>
+        
+    </div>    
+</body>
+</html>
