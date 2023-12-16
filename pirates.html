@@ -16,12 +16,14 @@
             <button class="topbarbuttons" onclick="openPage('movies.html')">Movies</button>
             <button class="topbarbuttons" onclick="openPage('webhook.html')">Webhook</button>
             <button class="topbarbuttons" onclick="openPage('cm2select.html')">Circuit Maker 2</button>
+            
         </div>
     </div>
     <div class="box2">
-	<label for="showSearch">Search for a show:</label>
+	
+        <label for="showSearch">Search for a show:</label>
     <input type="text" id="showSearch" placeholder="Enter show name" oninput="searchShows()">
-    
+    <button onclick="openLink('https://forms.gle/vdDSgqgWd1fSZcJDA')">Request a Show</button>
     <ul id="showList">
         <li data-value="1434">Family Guy</li>
         <li data-value="1433">American Dad</li>
