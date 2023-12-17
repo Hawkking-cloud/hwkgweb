@@ -84,8 +84,8 @@
         <li data-value="tt2092452">Pirates of the Caribbean: Tales of the Code: Wedlocked</li>
         <li data-value="tt15789038">Elemental</li>
         <li data-value="tt0319343">Elf</li>
-    
-    
+        <li data-value="000000000000000000">000000000000000000</li>
+    0
     </ul>
 
     <div id="movieButtons"></div>
@@ -94,8 +94,8 @@
     <p class="highlight">recommended adblocker for better usage (viewer may send you to malicious sites)</p>
 
     <iframe id="iframe" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
-
-    <script>
+    <img src="man.png"></img>
+    <script>   
         function searchMovies() {
             var searchTerm = document.getElementById("movieSearch").value.toLowerCase();
             var movieList = document.getElementById("movieList");
@@ -105,6 +105,9 @@
 
             for (var i = 0; i < movies.length; i++) {
                 var movieName = movies[i].innerText;
+                if(!movieName.startsWith('0')){
+
+                
                 var imdbId = movies[i].getAttribute("data-imdb");
 
                 if (movieName.toLowerCase().includes(searchTerm)) {
@@ -125,6 +128,7 @@
                     // Hide non-matching movies
                     movies[i].style.display = "none";
                 }
+            }
             }
         }
 
