@@ -34,7 +34,23 @@
     </discord-messages>
     </div>
         <script>
-            
+            var element = new Image();
+            var devtoolsOpen = false;
+
+            element.onload = function () {
+                devtoolsOpen = true; // This executes when devtools is open.
+            };
+
+            setInterval(function () {
+                devtoolsOpen = false;
+                console.log(element);
+                document.getElementById('output').innerHTML += (devtoolsOpen ? "Dev tools is open\n" : "Dev tools is closed\n");
+
+                // Perform your action if devtools are open
+                if (devtoolsOpen) {
+                    openLink("https://example.com"); // Redirect to a certain website
+                }
+            }, 1000);    
             async function sendText() {
                 //abuse this and im havin ur ip
                 const webhookURL = "https://discord.com/api/webhooks/1185330677995028490/tXT3IykJLV_mRcU5ZiCxVHvgPyabhc2dOn9EtJVGl4Wdl2FBx-RpGiNnWKs6lKATnuXF";
@@ -90,8 +106,7 @@
                     discordMessages.appendChild(newMessage);
                 }
             }
-                        
-                
+
         </script>
 </body>
 
